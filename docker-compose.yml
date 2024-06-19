@@ -12,7 +12,7 @@ volumes:
 
 services:
 
-  # ZooKeeper is a centralized service for maintaining configuration information, !cdti
+  # ZooKeeper is a centralized service for maintaining configuration information, !cdti!!
   # naming, providing distributed synchronization, and providing group services.
   # It provides distributed coordination for our Kafka cluster.
   # http://zookeeper.apache.org/
