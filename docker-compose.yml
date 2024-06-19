@@ -247,7 +247,7 @@ services:
       - "1883:1883"
       - "9001:9001"
     volumes:
-      - "/home/user/iot_event_streaming_architecture/mosquitto/config/mosquitto.conf"
+      - ./mosquitto/config/:mosquitto/config
 
   mongo:
     image: mongo:4.4
