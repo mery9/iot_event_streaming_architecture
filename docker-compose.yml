@@ -12,7 +12,7 @@ volumes:
 
 services:
 
-  # ZooKeeper is a centralized service for maintaining configuration information,
+  # ZooKeeper is a centralized service for maintaining configuration information, !cdti
   # naming, providing distributed synchronization, and providing group services.
   # It provides distributed coordination for our Kafka cluster.
   # http://zookeeper.apache.org/
@@ -200,39 +200,39 @@ services:
 
   # API for ZooNavigator, web-based browser & editor for ZooKeeper.
   # https://github.com/elkozmon/zoonavigator-api
-  zoonavigator-api:
-    image: elkozmon/zoonavigator-api:latest
-    container_name: zoonavigator-api
-    environment:
+  # zoonavigator-api:
+    # image: elkozmon/zoonavigator-api:latest
+    # container_name: zoonavigator-api
+    # environment:
       # The port on which the api service will listen for incoming connections.
-      SERVER_HTTP_PORT: 9000
-    restart: unless-stopped
+      # SERVER_HTTP_PORT: 9000
+    # restart: unless-stopped
     # zoonavigator-api relies upon ZooKeeper.
     # This will instruct docker to wait until those services are up
     # before attempting to start zoonavigator-api.
-    depends_on:
-      - zookeeper
+    # depends_on:
+      # - zookeeper
 
   # Web client for ZooNavigator, web-based browser & editor for ZooKeeper.
   # https://github.com/elkozmon/zoonavigator-web
-  zoonavigator-web:
-    image: elkozmon/zoonavigator-web:latest
-    container_name: zoonavigator-web
+  #zoonavigator-web:
+    # image: elkozmon/zoonavigator-web:latest
+    # container_name: zoonavigator-web
     # zoonavigator-web binds to port 8000, but we are going to expose it on our local
     # machine on port 8002.
-    ports:
-      - "8083:8000"
-    environment:
+    # ports:
+      # - "8083:8000"
+    # environment:
       # The following two keys instruct the web component how to connect to
       # the backing api component.
-      API_HOST: "zoonavigator-api"
-      API_PORT: 9000
+      # API_HOST: "zoonavigator-api"
+      # API_PORT: 9000
     # zoonavigator-web relies upon zoonavigator-api.
     # This will instruct docker to wait until those services are up
     # before attempting to start zoonavigator-web.
-    depends_on:
-      - zoonavigator-api
-    restart: unless-stopped
+    # depends_on:
+      # - zoonavigator-api
+    # restart: unless-stopped
 
   # Eclipse Mosquitto is an open source (EPL/EDL licensed) message broker that implements the MQTT protocol versions 5.0, 3.1.1 and 3.1. Mosquitto is lightweight and is suitable for use on all devices from low power single board computers to full servers.
   # The MQTT protocol provides a lightweight method of carrying out messaging using a publish/subscribe model. This makes it suitable for Internet of Things messaging such as with low power sensors or mobile devices such as phones, embedded computers or microcontrollers.
@@ -334,7 +334,7 @@ services:
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
-      - c:\:/rootfs:ro
+      # - c:\:/rootfs:ro
     command:
       - '--path.procfs=/host/proc'
       - '--path.rootfs=/rootfs'
@@ -350,7 +350,7 @@ services:
     container_name: cadvisor
     hostname: cadvisor
     volumes:
-      - c:\:/rootfs:ro
+      # - c:\:/rootfs:ro
       - /var/run:/var/run:ro
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
