@@ -246,6 +246,8 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
+    volumes:
+      - "/home/user/iot_event_streaming_architecture/mosquitto/config/mosquitto.conf"
 
   mongo:
     image: mongo:4.4
